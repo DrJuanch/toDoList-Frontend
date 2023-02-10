@@ -13,7 +13,7 @@ export const App = () => {
   const [todoList, setTodoList] = useState(list);
   useEffect(() => {
     async function fetchData(){
-      const response = await fetch('http://localhost:3030/toDos/');
+      const response = await fetch('http://127.0.0.1:3030/toDos/');
       const data = await response.json();
       setTodoList(data);
     }

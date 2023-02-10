@@ -9,6 +9,20 @@ function Form({ addTodo }) {
         e.preventDefault();
         if (inputValue.trim() === "") return;
         addTodo({ title: inputValue, completed: false });
+        let salida = {"tittle" : inputValue, "completed" : true};
+        const body = JSON.stringify(salida);
+        const requestInit = {
+            method : 'POST',
+            headers : {'content-type' : 'aplication/json'},
+            body : body
+        };
+        console.log(requestInit);
+        async function fetchData(){
+            const response = await fetch('http://127.0.0.1:3030/toDos/', requestInit);
+            const data = await response.json();
+            console.log(data); 
+        } 
+        fetchData();
         setInputValue("");
     };
     return (
